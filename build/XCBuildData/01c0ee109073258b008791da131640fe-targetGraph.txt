@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Alamofire in Pods, no dependencies
+Kingfisher in Pods, no dependencies
+Pods-SportsApp in Pods, depends on:
+Alamofire in Pods (explicit)
+Kingfisher in Pods (explicit)
