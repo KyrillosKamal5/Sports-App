@@ -36,15 +36,17 @@ class LocalDataSource{
     
     
     func saveLeague(league: LeagueModel){
-        guard let viewContext = viewContext ,
-              let entity = NSEntityDescription.entity(forEntityName: "LeagueT", in: viewContext) else {return}
-        let leagueEntity = NSManagedObject(entity: entity, insertInto: viewContext)
-        leagueEntity.setValue(league.strLeague, forKey: "title")
-        leagueEntity.setValue(league.strBadge, forKey: "image")
-        leagueEntity.setValue(league.strYoutube, forKey: "youtube")
-        leagueEntity.setValue(league.idLeague, forKey: "id")
-       
-        appDelagate?.saveContext()
+        let isExistedBefore = isFavoriteLague(leagueID: league.idLeague)
+                if !isExistedBefore {
+                    guard let viewContext = viewContext ,
+                    let entity = NSEntityDescription.entity(forEntityName: "LeagueT", in: viewContext) else {return}
+                    let leagueEntity = NSManagedObject(entity: entity, insertInto: viewContext)
+                    leagueEntity.setValue(league.strLeague, forKey: "title")
+                    leagueEntity.setValue(league.strBadge, forKey: "image")
+                    leagueEntity.setValue(league.strYoutube, forKey: "youtube")
+                    leagueEntity.setValue(league.idLeague, forKey: "id")
+                    appDelagate?.saveContext()
+                }
     }
     
     func getFavLeague() ->[LeagueModel]{
@@ -83,6 +85,26 @@ class LocalDataSource{
             print(error)
         }
         return true
+    }
+    
+    func removeLeague(league: LeagueModel) {
+        guard let viewContext = viewContext
+        else {return}
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "LeagueT")
+        
+        var predicateLeague = NSPredicate(format: "id == %@", league.idLeague as! CVarArg)
+        fetchRequest.predicate = predicateLeague
+        
+        do{
+            var leagueNSManagedObjects = try viewContext.fetch(fetchRequest)
+            if (leagueNSManagedObjects.first ?? nil) != nil{
+                viewContext.delete(leagueNSManagedObjects.first!)
+                appDelagate?.saveContext()
+            }
+        }catch let error as NSError {
+            print(error)
+        }
+      
     }
 }
 

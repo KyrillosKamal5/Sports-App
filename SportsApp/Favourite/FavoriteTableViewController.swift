@@ -42,7 +42,6 @@ class FavoriteTableViewController: UIViewController {
             noFavoriteView.isHidden = true
             self.favTableView.reloadData()
         }
-        
     }
     
     
@@ -65,9 +64,11 @@ class FavoriteTableViewController: UIViewController {
             let leagueDeatailsVC = storyboard.instantiateViewController(withIdentifier: "LeagueDetailsViewController") as? LeagueDetailsViewController
             guard let
                     leagueDeatailsVC = leagueDeatailsVC else{return}
+            leagueDeatailsVC.modalPresentationStyle = .fullScreen
             let indexPath = favTableView.indexPathForSelectedRow
             leagueDeatailsVC.leagueDetailTitle =  favLeagues?[indexPath?.row ?? 0].strLeague
             leagueDeatailsVC.leagueId = favLeagues?[indexPath?.row ?? 0].idLeague
+            leagueDeatailsVC.selectedLeague = favLeagues?[indexPath?.row ?? 0]
             
             self.present(leagueDeatailsVC , animated: true, completion: nil)
                 }else{

@@ -95,20 +95,22 @@ class LeagueDetailsViewController: UIViewController {
     @IBAction func favActionBtn(_ sender: UIBarButtonItem) {
         let image = UIImage(systemName: "heart")
         let imageFilled =  UIImage(systemName: "heart.fill")
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let viewContext = appDelegate.persistentContainer.viewContext
+
+        latestResultsPresenter?.setAppDelegateAndViewContext(appDelagate: appDelegate, viewContext: viewContext)
             if isFavoriteSelected {
                 favBtn.image = image
                 isFavoriteSelected = false
                 
                 guard let selectedLeague = selectedLeague else {return}
-                latestResultsPresenter?.deleteLeague(league: selectedLeague)
+                latestResultsPresenter?.removeLeague(league: selectedLeague)
+                
             }
             else{
                 favBtn.image = imageFilled
                 isFavoriteSelected = true
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                let viewContext = appDelegate.persistentContainer.viewContext
-    
-                latestResultsPresenter?.setAppDelegateAndViewContext(appDelagate: appDelegate, viewContext: viewContext)
+            
                 
                 guard let selectedLeague = selectedLeague else {return}
                 latestResultsPresenter?.saveLeague(league: selectedLeague)

@@ -761,8 +761,8 @@
     <resources>
         <image name="Versus" width="800" height="1803"/>
         <image name="chevron.backward" catalog="system" width="96" height="128"/>
-        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart" width="512" height="512"/>
+        <image name="heart" catalog="system" width="128" height="109"/>
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="sportscourt.fill" catalog="system" width="128" height="84"/>
