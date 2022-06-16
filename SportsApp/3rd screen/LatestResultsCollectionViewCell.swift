@@ -22,6 +22,7 @@ class LatestResultsCollectionViewCell: UICollectionViewCell {
     
     
     func setLatestResultObject (event: Event) {
+        
         homeScoreLabel.text = event.intHomeScore
         awayScoreLabel.text = event.intAwayScore
         timeLabel.text = event.strTime

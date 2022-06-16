@@ -23,6 +23,13 @@ class SportsCollectionViewController: UICollectionViewController, UICollectionVi
     var leaguesVC: LeaguesTableViewController?
     var selectedItem: Int?
     
+    override func viewWillAppear(_ animated: Bool) {
+        sportsHomePresenter?.getSports(completionHandler: { sports in
+            self.sports = sports
+            self.collectionView.reloadData()
+        })
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,11 +38,7 @@ class SportsCollectionViewController: UICollectionViewController, UICollectionVi
         dataSource = DataSource.sharedInstance
         sportsHomePresenter = SportsHomePresenter(dataSource: dataSource!, sportsVC: self)
         
-        sportsHomePresenter?.getSports(completionHandler: { sports in
-            print(sports[0].strSport)
-            self.sports = sports
-            self.collectionView.reloadData()
-        })
+        
         
         
         

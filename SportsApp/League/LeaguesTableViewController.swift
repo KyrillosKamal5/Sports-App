@@ -23,11 +23,6 @@ class LeaguesTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         titleSportLabel.title = leagueTitle
         
         dataLeague = DataSource.sharedInstance
@@ -71,10 +66,6 @@ class LeaguesTableViewController: UITableViewController {
         cell?.setLeague(league: leagues[indexPath.row])
         
         youtubePressed = leagues[indexPath.row].strYoutube
-        
-        
-        
-        
         
         return cell ?? UITableViewCell()
     }
@@ -134,6 +125,8 @@ class LeaguesTableViewController: UITableViewController {
             leagueDetailsVC.leagueDetailTitle = passed
             let leagueIDPassed = leagues[indexPath?.row ?? 0].idLeague
             leagueDetailsVC.leagueId = leagueIDPassed
+            let selectedLeague = leagues[indexPath?.row ?? 0]
+            leagueDetailsVC.selectedLeague = selectedLeague
             
             
         }

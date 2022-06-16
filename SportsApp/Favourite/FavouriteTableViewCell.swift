@@ -1,14 +1,14 @@
 //
-//  LeagueTableViewCell.swift
+//  FavouriteTableViewCell.swift
 //  SportsApp
 //
-//  Created by Mina Kamal on 09.06.22.
+//  Created by Mina Kamal on 16.06.22.
 //
 
 import UIKit
 import Kingfisher
+class FavouriteTableViewCell: UITableViewCell {
 
-class LeagueTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLeague: UILabel!
     @IBOutlet weak var imageLeague: UIImageView!
     
@@ -21,19 +21,26 @@ class LeagueTableViewCell: UITableViewCell {
         // Initialization code
     }
 
-    @IBAction func youtubeLeaguePressed(_ sender: UIButton) {
-        var url = URL(string:"https://www.apple.com")
-        if let youtubeUrl = self.youtubeUrl , !youtubeUrl.isEmpty{
-            url = URL(string: "https://\(youtubeUrl)")
-        }
-        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+    @IBAction func youtubeActionBtn(_ sender: UIButton) {
+            var url = URL(string:"https://www.apple.com")
+            if let youtubeUrl = self.youtubeUrl , !youtubeUrl.isEmpty{
+                url = URL(string: "https://\(youtubeUrl)")
+            }
+            UIApplication.shared.open(url!, options: [:], completionHandler: nil)
     }
+//    @IBAction func youtubeFavouritePressed(_ sender: UIButton) {
+//        var url = URL(string:"https://www.apple.com")
+//        if let youtubeUrl = self.youtubeUrl , !youtubeUrl.isEmpty{
+//            url = URL(string: "https://\(youtubeUrl)")
+//        }
+//        UIApplication.shared.open(url!, options: [:], completionHandler: nil)
+//    }
 
     
     func setLeague(league : LeagueModel){
         titleLeague.text = league.strLeague
         
-        let url = URL(string: "\(league.strBadge)/preview")
+        let url = URL(string: "\(league.strBadge)")
         let processor = DownsamplingImageProcessor(size: (self.bounds.size))
         |> RoundCornerImageProcessor(cornerRadius: 10)
         imageView?.kf.indicatorType = .activity
@@ -42,9 +49,9 @@ class LeagueTableViewCell: UITableViewCell {
             placeholder: UIImage(named: "football"),
             options: [
                 .processor(processor),
-//                .scaleFactor(UIScreen.main.scale),
-//                .transition(.fade(1)),
-//                .cacheOriginalImage
+                .scaleFactor(UIScreen.main.scale),
+                .transition(.fade(1)),
+                .cacheOriginalImage
             ])
         youtubeUrl = league.strYoutube
     }
@@ -54,5 +61,5 @@ class LeagueTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-  
+
 }

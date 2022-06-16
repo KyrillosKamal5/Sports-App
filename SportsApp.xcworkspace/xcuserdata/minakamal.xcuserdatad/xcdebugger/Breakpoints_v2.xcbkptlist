@@ -3,4 +3,161 @@
    uuid = "9B5BA70C-3A36-48F8-B815-188008798229"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85BF9553-698D-454F-9ACC-9F8A539F05D1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsApp/FavoriteTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsApp/FavoriteTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "FavoriteTableViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427 - e1ac9c20320b4fd7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsApp.FavoriteTableViewController.favPresenter.getter : Swift.Optional&lt;SportsApp.FavoritePresenter&gt;"
+                  moduleName = "SportsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minakamal/KK%20IOS3/Swift/Final%20Project%20Sport/SportsApp/SportsApp/FavoriteTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "90">
+               </Location>
+               <Location
+                  uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427 - 9b008b455c391cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsApp.FavoriteTableViewController.favPresenter.setter : Swift.Optional&lt;SportsApp.FavoritePresenter&gt;"
+                  moduleName = "SportsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minakamal/KK%20IOS3/Swift/Final%20Project%20Sport/SportsApp/SportsApp/FavoriteTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "116">
+               </Location>
+               <Location
+                  uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427 - ca4962a4697a4e5a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsApp.FavoriteTableViewController.favPresenter.modify : Swift.Optional&lt;SportsApp.FavoritePresenter&gt;"
+                  moduleName = "SportsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minakamal/KK%20IOS3/Swift/Final%20Project%20Sport/SportsApp/SportsApp/FavoriteTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427 - c624c8d79f1a071f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsApp.FavoriteTableViewController.favPresenter.modify : Swift.Optional&lt;SportsApp.FavoritePresenter&gt; with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "SportsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minakamal/KK%20IOS3/Swift/Final%20Project%20Sport/SportsApp/SportsApp/FavoriteTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "15">
+               </Location>
+               <Location
+                  uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427 - 9d1234fd0a899969"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsApp.FavoriteTableViewController.init(style: __C.UITableViewStyle) -&gt; SportsApp.FavoriteTableViewController"
+                  moduleName = "SportsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minakamal/KK%20IOS3/Swift/Final%20Project%20Sport/SportsApp/SportsApp/FavoriteTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "74">
+               </Location>
+               <Location
+                  uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427 - f5af95f7f1a6f71f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsApp.FavoriteTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; SportsApp.FavoriteTableViewController"
+                  moduleName = "SportsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minakamal/KK%20IOS3/Swift/Final%20Project%20Sport/SportsApp/SportsApp/FavoriteTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "127">
+               </Location>
+               <Location
+                  uuid = "2A076B84-5C6F-4360-8188-18A41B4FC427 - a6705a37ec7b3f6b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsApp.FavoriteTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;SportsApp.FavoriteTableViewController&gt;"
+                  moduleName = "SportsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/minakamal/KK%20IOS3/Swift/Final%20Project%20Sport/SportsApp/SportsApp/FavoriteTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "84">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CCCF837A-3341-4661-B24A-351415411948"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsApp/FavoriteTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
