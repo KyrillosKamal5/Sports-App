@@ -15,6 +15,7 @@ protocol ResultsLatestProtocol {
     func saveLeague(league: LeagueModel)
     func deleteLeague(league: LeagueModel)
     func isFavoriteLague (leagueID: String) -> Bool
+    func removeLeague(league: LeagueModel)
 }
 
 
@@ -79,5 +80,8 @@ extension LeagueDetailsPresenter: ResultsLatestProtocol {
     
     func isFavoriteLague (leagueID: String) -> Bool{
         self.localDataSource.isFavoriteLague(leagueID: leagueID)
+    }
+    func removeLeague(league: LeagueModel) {
+        self.localDataSource.removeLeague(league: league)
     }
 }
