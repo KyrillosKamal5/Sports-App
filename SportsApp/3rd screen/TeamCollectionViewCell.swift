@@ -19,7 +19,7 @@ class TeamCollectionViewCell: UICollectionViewCell {
         
         teamNameLabel.text = team.strTeam
         
-        let url = URL(string: team.strTeamBadge!)
+        let url = URL(string: team.strTeamBadge ?? "")
         //(self.bounds.size)
       var size =   CGSize(width: 50, height: 50)
         let processor = DownsamplingImageProcessor(size:

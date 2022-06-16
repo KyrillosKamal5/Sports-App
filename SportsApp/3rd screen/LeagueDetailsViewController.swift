@@ -33,9 +33,33 @@ class LeagueDetailsViewController: UIViewController {
     var latestResultsDataSource: LatestResultsProtocol?
     var isFavBtnSelected = false
     
+    var selectedLeague: LeagueModel?
+    var isFavoriteSelected: Bool = false
+    
+    override func viewWillAppear(_ animated: Bool) {
+        teamPresenter?.getTeam(teamName: leagueDetailTitle ?? "", completionHandler: { teams in
+            self.teams = teams
+            self.teamCollectionView.reloadData()
+        })
+        
+        
+        latestResultsDataSource = DataSource.sharedInstance
+        latestResultsPresenter = LeagueDetailsPresenter(latestResultsData: latestResultsDataSource!, latestResultVC: self)
+        
+        latestResultsPresenter?.getLatest(leagueID: leagueId ?? "", completionHandler: { upcomingEvents,latestResults  in
+           
+            if upcomingEvents.isEmpty || latestResults.isEmpty{
+                print("Error")
+            }else{
+                self.upcomingEvents = upcomingEvents
+                self.latestResults = latestResults
+            self.latestResultsCollectionView.reloadData()
+            self.upcomingEventCollectionView.reloadData()
+            }
+        })
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         leagueNameTitleBar.title = leagueDetailTitle
         
         upcomingEventCollectionView.delegate = self
@@ -50,44 +74,48 @@ class LeagueDetailsViewController: UIViewController {
         teamDataSource = DataSource.sharedInstance
         teamPresenter = TeamPresenter(dataTeam: teamDataSource!, leagueVC: self)
         
-        teamPresenter?.getTeam(teamName: leagueDetailTitle ?? "", completionHandler: { teams in
-            self.teams = teams
-            self.teamCollectionView.reloadData()
-        })
-        
-        
         latestResultsDataSource = DataSource.sharedInstance
-        latestResultsPresenter = LatestResultsPresenter(latestResultsData: latestResultsDataSource!, latestResultVC: self)
+        latestResultsPresenter = LeagueDetailsPresenter(latestResultsData: latestResultsDataSource!, latestResultVC: self)
         
-        latestResultsPresenter?.getLatest(leagueID: leagueId ?? "", completionHandler: { upcomingEvents,latestResults  in
-            self.upcomingEvents = upcomingEvents
-            self.latestResults = latestResults
-            self.latestResultsCollectionView.reloadData()
-            self.upcomingEventCollectionView.reloadData()
-        })
+        guard let latestResultsPresenter = latestResultsPresenter else {
+            return
+        }
+        self.isFavoriteSelected =  latestResultsPresenter.isFavoriteLague(leagueID: leagueId ?? "")
+         
+        if isFavoriteSelected{
+            let imageFilled =  UIImage(systemName: "heart.fill")
+            favBtn.image = imageFilled
+        }else{
+            let image = UIImage(systemName: "heart")
+            favBtn.image = image
+        }
         
     }
     
     @IBAction func favActionBtn(_ sender: UIBarButtonItem) {
-        
         let image = UIImage(systemName: "heart")
         let imageFilled =  UIImage(systemName: "heart.fill")
-            if isFavBtnSelected {
+            if isFavoriteSelected {
                 favBtn.image = image
-                isFavBtnSelected = false
+                isFavoriteSelected = false
+                
+                guard let selectedLeague = selectedLeague else {return}
+                latestResultsPresenter?.deleteLeague(league: selectedLeague)
             }
             else{
                 favBtn.image = imageFilled
-                isFavBtnSelected = true
+                isFavoriteSelected = true
+                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                let viewContext = appDelegate.persistentContainer.viewContext
+    
+                latestResultsPresenter?.setAppDelegateAndViewContext(appDelagate: appDelegate, viewContext: viewContext)
+                
+                guard let selectedLeague = selectedLeague else {return}
+                latestResultsPresenter?.saveLeague(league: selectedLeague)
             }
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let viewContext = appDelegate.persistentContainer.viewContext
+       
         
-        guard let entity = NSEntityDescription.entity(forEntityName: "League", in: viewContext) else {return}
-        let league = NSManagedObject(entity: entity, insertInto: viewContext)
-        league.setValue("League Title", forKey: "title")
-        league.setValue("League Image", forKey: "image")
     }
     
     
@@ -127,7 +155,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView.tag == 1{
             let latestResultsCell = collectionView.dequeueReusableCell(withReuseIdentifier: "latestResultsCell", for: indexPath) as? LatestResultsCollectionViewCell
-            latestResultsCell?.setLatestResultObject(event: upcomingEvents[indexPath.row])
+            latestResultsCell?.setLatestResultObject(event: latestResults[indexPath.row])
             return latestResultsCell ?? UICollectionViewCell()
         }else if collectionView.tag == 2 {
             let teamCell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as? TeamCollectionViewCell
@@ -139,6 +167,7 @@ extension LeagueDetailsViewController: UICollectionViewDataSource {
             upcomingEventCell?.setUpcomingEventObject(upcomingEvent: upcomingEvents[indexPath.row])
             return upcomingEventCell ?? UICollectionViewCell()
         }
+        
     }
     
     

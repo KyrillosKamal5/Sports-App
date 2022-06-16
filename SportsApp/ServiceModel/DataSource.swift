@@ -23,7 +23,7 @@ protocol TeamsDataProtocol{
 }
 
 protocol LatestResultsProtocol {
-    func getLatestResults(leagueID: String, completionHandler: @escaping ([Event]) -> Void )
+    func getLatestResults(leagueID: String, completionHandler: @escaping ([Event]?, Error?) -> Void )
 }
 
 
@@ -39,7 +39,7 @@ class DataSource {
 extension DataSource: SportsDataProtocol{
     func getSports(completionHandler: @escaping ([Sport]) -> Void){
         AF.request("https://www.thesportsdb.com/api/v1/json/2/all_sports.php").responseDecodable(of: Sports.self) { response in
-            completionHandler(response.value!.sports)
+            completionHandler(response.value?.sports ?? [])
         }
     }
 }
@@ -70,14 +70,17 @@ extension DataSource: TeamsDataProtocol{
 }
 
 extension DataSource : LatestResultsProtocol{
-    func getLatestResults( leagueID: String, completionHandler: @escaping ([Event]) -> Void) {
+    func getLatestResults( leagueID: String, completionHandler: @escaping ([Event]?, Error?) -> Void) {
         let parameters: Parameters = ["id": leagueID]
         AF.request("https://www.thesportsdb.com/api/v1/json/2/eventsseason.php", parameters: parameters).responseDecodable(of: Events.self) { response in
             if response.value != nil {
-                completionHandler(response.value!.events)
+                completionHandler(response.value!.events, nil)
+            }else{
+                completionHandler(nil, response.error )
             }
         }
     }
+
 }
 
 
