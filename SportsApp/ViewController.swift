@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  SportsApp
 //
-//  Created by Mina Kamal on 05.06.22.
+//  Created by Kyrillos Kamal on 05.06.22.
 //
 
 import UIKit
