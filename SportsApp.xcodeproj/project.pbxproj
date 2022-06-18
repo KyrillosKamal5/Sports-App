@@ -170,8 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				91D9355D284EC81400C6D544 /* SportsCollectionViewController.swift */,
-				91D9355E284EC81400C6D544 /* SportCollectionViewCell.swift */,
-				91C83545285028A000E9E352 /* SportHeaderCollectionReusableView.swift */,
+				91C8A301285DBC8D00FE9024 /* Cells */,
 			);
 			path = SportView;
 			sourceTree = "<group>";
@@ -201,6 +200,15 @@
 				91EB2CBE285D41A300CC154A /* LeagueModel */,
 			);
 			path = League;
+			sourceTree = "<group>";
+		};
+		91C8A301285DBC8D00FE9024 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				91D9355E284EC81400C6D544 /* SportCollectionViewCell.swift */,
+				91C83545285028A000E9E352 /* SportHeaderCollectionReusableView.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		91D9355A284EC6E400C6D544 /* ServiceModel */ = {
